@@ -5,6 +5,7 @@
 - Comprender y utilizar variables y tipos de datos primitivos.
 - Aplicar estructuras de control condicionales para tomar decisiones.
 - Definir funciones con argumentos, valores por defecto y retorno de resultados.
+- Leer archivos de texto y CSV, y procesar su contenido con listas.
 
 ## Metodología: TDD (Test-Driven Development)
 
@@ -22,11 +23,14 @@ fundamentos-python/
 ├── ejercicios/          # Tu código va acá
 │   ├── variables.py
 │   ├── condicionales.py
-│   └── funciones.py
+│   ├── funciones.py
+│   └── archivos_listas.py
 ├── tests/               # Tests que no debes modificar
 │   ├── test_variables.py
 │   ├── test_condicionales.py
-│   └── test_funciones.py
+│   ├── test_funciones.py
+│   ├── test_archivos_listas.py
+│   └── data/            # Archivos de prueba (CSV y texto)
 ├── pytest.ini
 └── README.md
 ```
@@ -49,6 +53,7 @@ Para ejecutar solo un módulo:
 pytest tests/test_variables.py
 pytest tests/test_condicionales.py
 pytest tests/test_funciones.py
+pytest tests/test_archivos_listas.py
 ```
 
 ## Progreso sugerido
@@ -56,6 +61,7 @@ pytest tests/test_funciones.py
 - **Semana 1**: Variables y tipos de datos
 - **Semana 2**: Condicionales
 - **Semana 3+**: Funciones
+- **Semana 4+**: Archivos y listas (Nivel 1 → Nivel 4, ver comentarios en `ejercicios/archivos_listas.py`)
 
 ## Normas del práctico
 
