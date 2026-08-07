@@ -23,6 +23,14 @@ from ejercicios.archivos_listas import (
     contar_lineas,
     leer_csv_primera_fila,
     leer_csv_primera_fila_como_dict,
+    obtener_campo_por_indice,
+    obtener_campo_por_nombre,
+    contar_campos_csv,
+    obtener_encabezados_csv,
+    convertir_campo_a_int,
+    convertir_campo_a_float,
+    campo_existe_csv,
+    formato_registro_csv,
     leer_csv_como_matriz,
     leer_csv_como_lista_diccionarios,
     obtener_columna_csv,
@@ -118,6 +126,99 @@ class TestLeerCsvPrimeraFilaComoDict:
         """Las claves del dict deben coincidir con la primera linea (encabezado)."""
         resultado = leer_csv_primera_fila_como_dict(ruta("una_linea.csv"))
         assert set(resultado.keys()) == {"nombre", "edad", "ciudad"}
+
+
+class TestObtenerCampoPorIndice:
+    def test_indice_cero_retorna_primer_campo(self):
+        """El indice 0 debe retornar 'Juan' (primer campo: nombre)."""
+        assert obtener_campo_por_indice(ruta("una_linea.csv"), 0) == "Juan"
+
+    def test_indice_uno_retorna_segundo_campo(self):
+        """El indice 1 debe retornar '30' (segundo campo: edad)."""
+        assert obtener_campo_por_indice(ruta("una_linea.csv"), 1) == "30"
+
+    def test_indice_dos_retorna_tercer_campo(self):
+        """El indice 2 debe retornar 'Córdoba' (tercer campo: ciudad)."""
+        assert obtener_campo_por_indice(ruta("una_linea.csv"), 2) == "Córdoba"
+
+
+class TestObtenerCampoPorNombre:
+    def test_nombre_campo_nombre(self):
+        """El campo 'nombre' debe retornar 'Juan'."""
+        assert obtener_campo_por_nombre(ruta("una_linea.csv"), "nombre") == "Juan"
+
+    def test_nombre_campo_edad(self):
+        """El campo 'edad' debe retornar '30' (como string)."""
+        assert obtener_campo_por_nombre(ruta("una_linea.csv"), "edad") == "30"
+
+    def test_nombre_campo_ciudad(self):
+        """El campo 'ciudad' debe retornar 'Córdoba'."""
+        assert obtener_campo_por_nombre(ruta("una_linea.csv"), "ciudad") == "Córdoba"
+
+
+class TestContarCamposCsv:
+    def test_una_linea_tiene_tres_campos(self):
+        """una_linea.csv tiene 3 columnas (nombre, edad, ciudad)."""
+        assert contar_campos_csv(ruta("una_linea.csv")) == 3
+
+
+class TestObtenerEncabezadosCsv:
+    def test_retorna_los_nombres_de_columna(self):
+        """Debe retornar ['nombre', 'edad', 'ciudad'] en orden."""
+        assert obtener_encabezados_csv(ruta("una_linea.csv")) == [
+            "nombre", "edad", "ciudad"
+        ]
+
+    def test_no_incluye_datos(self):
+        """La lista retornada no debe incluir 'Juan', '30' ni 'Córdoba'."""
+        resultado = obtener_encabezados_csv(ruta("una_linea.csv"))
+        for valor in ("Juan", "30", "Córdoba"):
+            assert valor not in resultado
+
+
+class TestConvertirCampoAInt:
+    def test_edad_convertida_a_int(self):
+        """El campo 'edad' (valor '30') debe convertirse a 30 (int)."""
+        resultado = convertir_campo_a_int(ruta("una_linea.csv"), "edad")
+        assert resultado == 30
+        assert isinstance(resultado, int)
+
+
+class TestConvertirCampoAFloat:
+    def test_edad_convertida_a_float(self):
+        """El campo 'edad' (valor '30') debe convertirse a 30.0 (float)."""
+        resultado = convertir_campo_a_float(ruta("una_linea.csv"), "edad")
+        assert resultado == 30.0
+        assert isinstance(resultado, float)
+
+
+class TestCampoExisteCsv:
+    def test_campo_existente_retorna_true(self):
+        """El campo 'nombre' existe en una_linea.csv -> True."""
+        assert campo_existe_csv(ruta("una_linea.csv"), "nombre") is True
+
+    def test_campo_inexistente_retorna_false(self):
+        """El campo 'apellido' no existe en una_linea.csv -> False."""
+        assert campo_existe_csv(ruta("una_linea.csv"), "apellido") is False
+
+    def test_edad_y_ciudad_existen(self):
+        """Los campos 'edad' y 'ciudad' existen -> True."""
+        assert campo_existe_csv(ruta("una_linea.csv"), "edad") is True
+        assert campo_existe_csv(ruta("una_linea.csv"), "ciudad") is True
+
+
+class TestFormatoRegistroCsv:
+    def test_formato_clave_igual_valor(self):
+        """Debe retornar 'nombre=Juan, edad=30, ciudad=Córdoba'."""
+        assert formato_registro_csv(ruta("una_linea.csv")) == \
+            "nombre=Juan, edad=30, ciudad=Córdoba"
+
+    def test_contiene_todos_los_campos(self):
+        """La cadena debe contener los tres pares clave=valor."""
+        resultado = formato_registro_csv(ruta("una_linea.csv"))
+        assert "nombre=Juan" in resultado
+        assert "edad=30" in resultado
+        assert "ciudad=Córdoba" in resultado
 
 
 # ---------------------------------------------------------------------------

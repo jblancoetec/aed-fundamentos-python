@@ -4,7 +4,9 @@ Modulo de ejercicios: Lectura de archivos y tratamiento con listas.
 Los ejercicios siguen una progresion de dificultad:
 
 Nivel 1 - Lectura basica de archivos de texto plano.
-Nivel 2 - Lectura de archivos CSV con un solo registro (encabezado + 1 fila).
+Nivel 2 - Lectura de archivos CSV con un solo registro (encabezado + 1 fila):
+           lectura cruda, acceso por indice, acceso por nombre, conversion
+           de tipos, validacion de campos y formato del registro.
 Nivel 3 - Lectura de archivos CSV con varios registros (listas y diccionarios).
 Nivel 4 - Filtros, busquedas y agregaciones sobre el contenido del CSV.
 """
@@ -80,6 +82,118 @@ def leer_csv_primera_fila_como_dict(ruta):
 
     Returns:
         dict[str, str]: pares campo:valor de la unica fila de datos.
+    """
+    pass
+
+
+def obtener_campo_por_indice(ruta, indice):
+    """Retorna el valor de un campo de la unica fila, accediendo por su posicion.
+
+    La primera columna (indice 0) es el primer campo del encabezado.
+
+    Args:
+        ruta (str): ruta al archivo CSV.
+        indice (int): posicion (0-based) del campo a obtener.
+
+    Returns:
+        str: valor del campo en la posicion indicada.
+    """
+    pass
+
+
+def obtener_campo_por_nombre(ruta, nombre_campo):
+    """Retorna el valor de un campo de la unica fila, accediendo por nombre.
+
+    Busca el nombre en el encabezado y devuelve el valor correspondiente
+    de la fila de datos.
+
+    Args:
+        ruta (str): ruta al archivo CSV.
+        nombre_campo (str): nombre del encabezado a buscar.
+
+    Returns:
+        str: valor del campo cuyo encabezado coincide con nombre_campo.
+    """
+    pass
+
+
+def contar_campos_csv(ruta):
+    """Cuenta cuantos campos (columnas) tiene la fila de datos.
+
+    No incluye el encabezado en el conteo: equivale al numero de columnas
+    declaradas en la primera linea del archivo.
+
+    Args:
+        ruta (str): ruta al archivo CSV.
+
+    Returns:
+        int: cantidad de campos del registro.
+    """
+    pass
+
+
+def obtener_encabezados_csv(ruta):
+    """Retorna la lista de nombres de las columnas (encabezado) del CSV.
+
+    Args:
+        ruta (str): ruta al archivo CSV.
+
+    Returns:
+        list[str]: lista con los nombres de las columnas en orden.
+    """
+    pass
+
+
+def convertir_campo_a_int(ruta, nombre_campo):
+    """Retorna el valor de un campo convertido a entero.
+
+    Args:
+        ruta (str): ruta al archivo CSV.
+        nombre_campo (str): nombre del campo cuyo valor se convertira a int.
+
+    Returns:
+        int: valor del campo convertido a entero.
+    """
+    pass
+
+
+def convertir_campo_a_float(ruta, nombre_campo):
+    """Retorna el valor de un campo convertido a numero decimal (float).
+
+    Args:
+        ruta (str): ruta al archivo CSV.
+        nombre_campo (str): nombre del campo cuyo valor se convertira a float.
+
+    Returns:
+        float: valor del campo convertido a float.
+    """
+    pass
+
+
+def campo_existe_csv(ruta, nombre_campo):
+    """Verifica si un nombre de columna aparece en el encabezado del CSV.
+
+    Args:
+        ruta (str): ruta al archivo CSV.
+        nombre_campo (str): nombre de columna a buscar.
+
+    Returns:
+        bool: True si nombre_campo esta en el encabezado, False en caso contrario.
+    """
+    pass
+
+
+def formato_registro_csv(ruta):
+    """Retorna el unico registro del CSV como una cadena formateada.
+
+    El formato es "clave=valor, clave=valor, ...", donde cada par
+    clave=valor corresponde a un campo del registro.
+
+    Args:
+        ruta (str): ruta al archivo CSV.
+
+    Returns:
+        str: representacion del registro en formato "clave=valor".
     """
     pass
 
