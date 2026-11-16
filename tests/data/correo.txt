@@ -1,0 +1,6 @@
+Hola equipo,
+Les recuerdo que la entrega del proyecto final es el viernes.
+
+Por favor revisen que todos los tests pasen antes de subir los cambios.
+Saludos cordiales,
+Coordinación de AED

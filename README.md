@@ -1,11 +1,10 @@
-# Práctico: Fundamentos de Python
+# Práctico: Algoritmos y Estructuras de Datos en Python
 
 ## Objetivos de aprendizaje
 
-- Comprender y utilizar variables y tipos de datos primitivos.
-- Aplicar estructuras de control condicionales para tomar decisiones.
-- Definir funciones con argumentos, valores por defecto y retorno de resultados.
-- Leer archivos de texto y CSV, y procesar su contenido con listas.
+- Recorrer, filtrar y transformar **listas**, **listas paralelas** y **listas de listas (matrices)** mediante ciclos `for` y `while`.
+- Modelar, validar, consultar y agregar información utilizando **diccionarios** y **listas de diccionarios**.
+- Manipular rutas absolutas y relativas, leer y escribir **archivos de texto** (modos `"r"`, `"w"` y `"a"`) y procesar **archivos CSV**.
 
 ## Metodología: TDD (Test-Driven Development)
 
@@ -19,18 +18,17 @@ El flujo de trabajo es el siguiente:
 ## Estructura del proyecto
 
 ```
-fundamentos-python/
-├── ejercicios/          # Tu código va acá
-│   ├── variables.py
-│   ├── condicionales.py
-│   ├── funciones.py
-│   └── archivos_listas.py
-├── tests/               # Tests que no debes modificar
-│   ├── test_variables.py
-│   ├── test_condicionales.py
-│   ├── test_funciones.py
-│   ├── test_archivos_listas.py
-│   └── data/            # Archivos de prueba (CSV y texto)
+aed-fundamentos-python/
+├── ejercicios/                  # Tu código va acá (24 ejercicios por módulo)
+│   ├── listas_ciclos.py         # Ciclos, listas simples, listas paralelas y matrices
+│   ├── diccionarios.py          # Diccionarios y listas de diccionarios
+│   └── archivos.py              # Rutas, archivos de texto (r/w/a) y archivos CSV
+├── tests/                       # Tests que no debes modificar
+│   ├── test_listas_ciclos.py
+│   ├── test_diccionarios.py
+│   ├── test_archivos.py
+│   └── data/                    # Archivos de prueba (CSV y texto)
+├── APUNTE.md
 ├── pytest.ini
 └── README.md
 ```
@@ -50,22 +48,19 @@ pytest
 Para ejecutar solo un módulo:
 
 ```bash
-pytest tests/test_variables.py
-pytest tests/test_condicionales.py
-pytest tests/test_funciones.py
-pytest tests/test_archivos_listas.py
+pytest tests/test_listas_ciclos.py
+pytest tests/test_diccionarios.py
+pytest tests/test_archivos.py
 ```
 
 ## Progreso sugerido
 
-- **Semana 1**: Variables y tipos de datos
-- **Semana 2**: Condicionales
-- **Semana 3+**: Funciones
-- **Semana 4+**: Archivos y listas (Nivel 1 → Nivel 4, ver comentarios en `ejercicios/archivos_listas.py`)
+- **Módulo 1 (`ejercicios/listas_ciclos.py`)**: Indexación, ciclos, listas simples, listas paralelas y matrices.
+- **Módulo 2 (`ejercicios/diccionarios.py`)**: Modelado de registros con diccionarios, búsquedas, filtros y agregaciones sobre listas de diccionarios.
+- **Módulo 3 (`ejercicios/archivos.py`)**: Rutas absolutas/relativas, archivos de texto con formato y lectura/escritura de archivos CSV.
 
 ## Normas del práctico
 
 - No editen los archivos dentro de `tests/`.
-- Los archivos en `ejercicios/` tienen stubs (funciones vacías). Reemplazar `pass` por la implementación.
-- Ante la duda sobre el comportamiento de un test, lean el docstring del test.
-- Los desafíos son opcionales pero recomendados.
+- Los archivos en `ejercicios/` tienen stubs (funciones vacías con `pass`). Reemplazar `pass` por la implementación.
+- Ante la duda sobre el comportamiento de un ejercicio, lean tanto el docstring de la función como el docstring del test correspondiente.
